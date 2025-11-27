@@ -35,17 +35,20 @@ class Aviso extends Model {
 
     // Buscar avisos
     public function buscar($termino) {
-        $sql = "SELECT a.*, u.nombre as autor 
-                FROM avisos a 
-                INNER JOIN usuarios u ON a.usuario_id = u.id 
-                WHERE a.activo = 1 
-                AND (a.titulo LIKE :termino OR a.contenido LIKE :termino)
-                ORDER BY a.created_at DESC";
-        
-        $stmt = $this->db->prepare($sql);
-        $termino = "%{$termino}%";
-        $stmt->bindParam(':termino', $termino);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+    // Sanitizar entrada
+    $termino = htmlspecialchars(strip_tags($termino));
+    
+    $sql = "SELECT a.*, u.nombre as autor 
+            FROM avisos a 
+            INNER JOIN usuarios u ON a.usuario_id = u.id 
+            WHERE a.activo = 1 
+            AND (a.titulo LIKE :termino OR a.contenido LIKE :termino)
+            ORDER BY a.created_at DESC";
+    
+    $stmt = $this->db->prepare($sql);
+    $searchTerm = "%{$termino}%";
+    $stmt->bindParam(':termino', $searchTerm, PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+ }
