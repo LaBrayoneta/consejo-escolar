@@ -103,7 +103,6 @@
     font-size: 2rem;
     font-weight: 800;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -269,7 +268,6 @@
     font-size: 1.5rem;
     font-weight: 800;
     background: linear-gradient(135deg, #fff 0%, #cbd5e0 100%);
-    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -444,7 +442,6 @@
     font-size: 3rem;
     font-weight: 800;
     background: linear-gradient(135deg, var(--admin-secondary) 0%, var(--admin-accent) 100%);
-    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin: var(--admin-spacing-md) 0;
 }
@@ -595,4 +592,436 @@
         gap: var(--admin-spacing-md);
         align-items: flex-start;
     }
+}
+
+/* ============================================
+   ESTILOS ADICIONALES ADMIN
+   ============================================ */
+
+/* Contenedor principal admin */
+.admin-container {
+    padding: var(--admin-spacing-xl);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   Tablas Admin
+   ============================================ */
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--admin-spacing-xl);
+    padding: var(--admin-spacing-lg);
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--admin-shadow-sm);
+}
+
+.table-header h2 {
+    margin: 0;
+    color: var(--admin-primary);
+    font-weight: 700;
+}
+
+.table-container {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--admin-shadow-md);
+    border: 1px solid #e2e8f0;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table thead {
+    background: linear-gradient(135deg, var(--admin-primary) 0%, var(--admin-primary-light) 100%);
+    color: white;
+}
+
+.admin-table th {
+    padding: var(--admin-spacing-lg);
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.admin-table tbody tr {
+    border-bottom: 1px solid #e2e8f0;
+    transition: all var(--transition-base);
+}
+
+.admin-table tbody tr:hover {
+    background: #f7fafc;
+}
+
+.admin-table td {
+    padding: var(--admin-spacing-lg);
+    vertical-align: middle;
+}
+
+.table-actions {
+    display: flex;
+    gap: var(--admin-spacing-sm);
+}
+
+.btn-action {
+    padding: var(--admin-spacing-sm);
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 1.25rem;
+    transition: all var(--transition-base);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+}
+
+.btn-view {
+    background: #e6f7ff;
+}
+
+.btn-view:hover {
+    background: var(--admin-secondary);
+    transform: scale(1.1);
+}
+
+.btn-edit {
+    background: #fff7e6;
+}
+
+.btn-edit:hover {
+    background: var(--admin-warning);
+    transform: scale(1.1);
+}
+
+.btn-delete {
+    background: #ffe6e6;
+}
+
+.btn-delete:hover {
+    background: var(--admin-danger);
+    transform: scale(1.1);
+}
+
+/* Badges */
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge-danger {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge-warning {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.badge-secondary {
+    background: #e2e8f0;
+    color: #4a5568;
+}
+
+/* ============================================
+   Formularios Admin
+   ============================================ */
+.form-card {
+    background: white;
+    border-radius: 16px;
+    padding: var(--admin-spacing-2xl);
+    box-shadow: var(--admin-shadow-lg);
+    max-width: 800px;
+    margin: 0 auto;
+    border: 1px solid #e2e8f0;
+}
+
+.form-group {
+    margin-bottom: var(--admin-spacing-xl);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--admin-spacing-sm);
+    font-weight: 700;
+    color: var(--admin-primary);
+    font-size: 0.9375rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="number"],
+.form-group input[type="tel"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: var(--admin-spacing-md);
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all var(--transition-base);
+    background: #f7fafc;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--admin-secondary);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-group.is-invalid input,
+.form-group.is-invalid textarea,
+.form-group.is-invalid select {
+    border-color: var(--admin-danger);
+}
+
+.form-error {
+    color: var(--admin-danger);
+    font-size: 0.875rem;
+    margin-top: var(--admin-spacing-sm);
+    display: none;
+}
+
+.form-hint {
+    display: block;
+    color: #718096;
+    font-size: 0.875rem;
+    margin-top: var(--admin-spacing-xs);
+    font-style: italic;
+}
+
+/* Checkbox Groups */
+.checkbox-group {
+    padding: var(--admin-spacing-md);
+    background: #f7fafc;
+    border-radius: 12px;
+    border: 2px solid #e2e8f0;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-md);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--admin-secondary);
+}
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    gap: var(--admin-spacing-md);
+    margin-top: var(--admin-spacing-2xl);
+    padding-top: var(--admin-spacing-xl);
+    border-top: 2px solid #e2e8f0;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, var(--admin-danger) 0%, #c53030 100%);
+    color: white;
+    margin-left: auto;
+}
+
+/* ============================================
+   Empty State Admin
+   ============================================ */
+.admin-container .empty-state {
+    text-align: center;
+    padding: var(--admin-spacing-2xl);
+    background: white;
+    border-radius: 16px;
+    box-shadow: var(--admin-shadow-md);
+}
+
+.admin-container .empty-state::before {
+    content: '📭';
+    display: block;
+    font-size: 4rem;
+    margin-bottom: var(--admin-spacing-lg);
+}
+
+.admin-container .empty-state p {
+    color: #718096;
+    font-size: 1.125rem;
+    margin-bottom: var(--admin-spacing-lg);
+}
+
+/* ============================================
+   Responsive Tables
+   ============================================ */
+@media (max-width: 1024px) {
+    .admin-table {
+        font-size: 0.875rem;
+    }
+    
+    .admin-table th,
+    .admin-table td {
+        padding: var(--admin-spacing-md);
+    }
+}
+
+@media (max-width: 768px) {
+    .table-header {
+        flex-direction: column;
+        gap: var(--admin-spacing-md);
+        align-items: stretch;
+    }
+    
+    .table-container {
+        overflow-x: auto;
+    }
+    
+    .admin-table {
+        min-width: 600px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .btn-danger {
+        margin-left: 0;
+        order: -1;
+    }
+}
+
+/* ============================================
+   Loading States
+   ============================================ */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(49, 130, 206, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--admin-secondary);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   Alerts Admin
+   ============================================ */
+.alert {
+    position: relative;
+    padding: var(--admin-spacing-lg);
+    border-radius: 12px;
+    margin-bottom: var(--admin-spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-md);
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert-success {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    color: #155724;
+    border-left: 4px solid var(--admin-success);
+}
+
+.alert-error {
+    background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+    color: #721c24;
+    border-left: 4px solid var(--admin-danger);
+}
+
+.alert-warning {
+    background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+    color: #856404;
+    border-left: 4px solid var(--admin-warning);
+}
+
+.alert-close {
+    position: absolute;
+    top: var(--admin-spacing-sm);
+    right: var(--admin-spacing-md);
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity var(--transition-base);
+}
+
+.alert-close:hover {
+    opacity: 1;
+}
+
+/* ============================================
+   Tooltips
+   ============================================ */
+[data-tooltip] {
+    position: relative;
+    cursor: help;
+}
+
+[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: var(--admin-spacing-sm) var(--admin-spacing-md);
+    background: var(--admin-primary);
+    color: white;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-base);
+    margin-bottom: var(--admin-spacing-sm);
+}
+
+[data-tooltip]:hover::after {
+    opacity: 1;
 }
