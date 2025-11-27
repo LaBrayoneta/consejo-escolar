@@ -35,4 +35,3 @@ class HomeController {
         require BASE_PATH . '/views/pages/oficinas.php';
     }
 }
-?>

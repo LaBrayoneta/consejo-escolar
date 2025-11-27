@@ -1,5 +1,3 @@
-?>
-
 <?php
 // controllers/AdminController.php
 class AdminController {
@@ -96,4 +94,3 @@ class AdminController {
         require BASE_PATH . '/views/pages/admin_oficinas.php';
     }
 }
-?>

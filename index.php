@@ -1,5 +1,3 @@
-?>
-
 <?php
 // index.php - Versión compatible sin mod_rewrite
 session_start();
@@ -76,4 +74,3 @@ if (file_exists($controllerPath)) {
         require BASE_PATH . '/views/pages/404.php';
     }
 }
-?>

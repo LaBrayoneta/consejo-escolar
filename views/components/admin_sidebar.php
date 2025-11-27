@@ -1,5 +1,3 @@
-?>
-
 <aside class="admin-sidebar">
     <div class="sidebar-header">
         <h2>Panel Admin</h2>

@@ -1,5 +1,3 @@
-?>
-
 <header class="site-header">
     <div class="header-container">
         <div class="logo">

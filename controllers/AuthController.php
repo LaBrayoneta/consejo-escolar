@@ -1,5 +1,3 @@
-?>
-
 <?php
 // controllers/AuthController.php
 class AuthController {
@@ -68,5 +66,4 @@ class AuthController {
         exit;
     }
 }
-?>
 
