@@ -1,38 +1,24 @@
 <?php
-// config/Database.php
 class Database {
-    private static $instance = null;
+    private $host = 'localhost';
+    private $db_name = 'consejo_escolar';
+    private $username = 'root';
+    private $password = '';
     private $conn;
-    
-    private function __construct() {
-        $config = require __DIR__ . '/db.php';
-        
+
+    public function connect() {
+        $this->conn = null;
         try {
-            $dsn = "mysql:host={$config['host']};dbname={$config['database']};charset={$config['charset']}";
-            $this->conn = new PDO($dsn, $config['username'], $config['password']);
+            $this->conn = new PDO(
+                "mysql:host=" . $this->host . ";dbname=" . $this->db_name,
+                $this->username,
+                $this->password
+            );
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+            $this->conn->exec("set names utf8mb4");
         } catch(PDOException $e) {
-            die("Error de conexión: " . $e->getMessage());
+            echo "Error de conexión: " . $e->getMessage();
         }
-    }
-    
-    public static function getInstance() {
-        if (self::$instance === null) {
-            self::$instance = new self();
-        }
-        return self::$instance;
-    }
-    
-    public function getConnection() {
         return $this->conn;
-    }
-    
-    // Prevenir clonación
-    private function __clone() {}
-    
-    // Prevenir deserialización
-    public function __wakeup() {
-        throw new Exception("No se puede deserializar singleton");
     }
 }
