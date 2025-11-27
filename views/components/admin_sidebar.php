@@ -1,36 +1,39 @@
-}<aside class="admin-sidebar">
+?>
+
+<aside class="admin-sidebar">
     <div class="sidebar-header">
         <h2>Panel Admin</h2>
+        <p class="user-welcome">Hola, <?php echo htmlspecialchars($_SESSION['user_name'] ?? 'Usuario'); ?></p>
     </div>
     
     <nav class="sidebar-nav">
         <ul>
             <li>
-                <a href="/admin" class="<?php echo $_SERVER['REQUEST_URI'] === '/admin' ? 'active' : ''; ?>">
+                <a href="/index.php?page=admin" class="<?php echo ($_GET['page'] ?? '') === 'admin' ? 'active' : ''; ?>">
                     <span class="icon">📊</span>
                     Dashboard
                 </a>
             </li>
             <li>
-                <a href="/admin/avisos" class="<?php echo strpos($_SERVER['REQUEST_URI'], '/admin/avisos') !== false ? 'active' : ''; ?>">
+                <a href="/index.php?page=admin/avisos" class="<?php echo strpos($_GET['page'] ?? '', 'admin/avisos') !== false ? 'active' : ''; ?>">
                     <span class="icon">📢</span>
                     Avisos
                 </a>
             </li>
             <li>
-                <a href="/admin/oficinas" class="<?php echo strpos($_SERVER['REQUEST_URI'], '/admin/oficinas') !== false ? 'active' : ''; ?>">
+                <a href="/index.php?page=admin/oficinas" class="<?php echo strpos($_GET['page'] ?? '', 'admin/oficinas') !== false ? 'active' : ''; ?>">
                     <span class="icon">🏢</span>
                     Oficinas
                 </a>
             </li>
             <li>
-                <a href="/">
+                <a href="/index.php">
                     <span class="icon">🌐</span>
                     Ver Sitio
                 </a>
             </li>
             <li>
-                <a href="/auth/logout">
+                <a href="/index.php?page=auth/logout">
                     <span class="icon">🚪</span>
                     Cerrar Sesión
                 </a>

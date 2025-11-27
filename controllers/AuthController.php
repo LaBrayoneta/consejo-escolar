@@ -1,3 +1,5 @@
+?>
+
 <?php
 // controllers/AuthController.php
 class AuthController {
@@ -17,7 +19,7 @@ class AuthController {
                 $_SESSION['user_name'] = $user['nombre'];
                 $_SESSION['user_role'] = $user['rol'];
                 
-                header('Location: /admin');
+                header('Location: /index.php?page=admin');
                 exit;
             } else {
                 $error = "Credenciales incorrectas";
@@ -39,7 +41,6 @@ class AuthController {
             } else {
                 $db = Database::getInstance()->getConnection();
                 
-                // Verificar si el email ya existe
                 $stmt = $db->prepare("SELECT id FROM usuarios WHERE email = ?");
                 $stmt->execute([$email]);
                 
@@ -63,8 +64,9 @@ class AuthController {
     
     public function logout() {
         session_destroy();
-        header('Location: /');
+        header('Location: /index.php');
         exit;
     }
 }
 ?>
+

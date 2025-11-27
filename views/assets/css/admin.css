@@ -266,3 +266,68 @@
         grid-template-columns: 1fr;
     }
 }
+
+.sidebar-header .user-welcome {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-top: 0.5rem;
+}
+
+/* Badges para estados */
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.badge-publicado {
+    background-color: #27ae60;
+    color: white;
+}
+
+.badge-borrador {
+    background-color: #95a5a6;
+    color: white;
+}
+
+/* Botones de acción en línea */
+.action-buttons-inline {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* Mejora para placeholder en textareas */
+textarea::placeholder {
+    color: #95a5a6;
+    opacity: 0.7;
+}
+
+/* Mejora para el contenido sin datos */
+.no-content {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: var(--gray);
+    font-style: italic;
+    background: var(--gray-light);
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+/* Responsive para tablas */
+@media (max-width: 768px) {
+    .admin-table table {
+        font-size: 0.85rem;
+    }
+    
+    .admin-table th,
+    .admin-table td {
+        padding: 0.5rem;
+    }
+    
+    .action-buttons-inline {
+        flex-direction: column;
+    }
+}

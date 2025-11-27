@@ -1,10 +1,12 @@
+?>
+
 <?php
 // controllers/AdminController.php
 class AdminController {
     
     private function checkAuth() {
         if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'admin') {
-            header('Location: /auth/login');
+            header('Location: /index.php?page=auth/login');
             exit;
         }
     }
@@ -14,7 +16,6 @@ class AdminController {
         
         $db = Database::getInstance()->getConnection();
         
-        // Estadísticas
         $stmt = $db->query("SELECT COUNT(*) as total FROM avisos");
         $totalAvisos = $stmt->fetch()['total'];
         
@@ -50,7 +51,6 @@ class AdminController {
             }
         }
         
-        // Obtener todos los avisos
         $stmt = $db->query("SELECT a.*, u.nombre as autor FROM avisos a LEFT JOIN usuarios u ON a.autor_id = u.id ORDER BY a.fecha_publicacion DESC");
         $avisos = $stmt->fetchAll();
         
@@ -90,7 +90,6 @@ class AdminController {
             }
         }
         
-        // Obtener todas las oficinas
         $stmt = $db->query("SELECT * FROM oficinas ORDER BY nombre");
         $oficinas = $stmt->fetchAll();
         
