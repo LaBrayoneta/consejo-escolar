@@ -1,63 +1,73 @@
 /* ============================================
-   CSS MEJORADO - Sitio Público Consejo Escolar
+   CSS UNIFICADO - Consejo Escolar 2025
+   Diseño Moderno con Gradientes y Glassmorphism
    ============================================ */
 
-/* Reset y Variables Mejoradas */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 :root {
-    /* Colores principales */
-    --primary-color: #1e3a5f;
-    --primary-light: #2c5282;
-    --primary-dark: #152a45;
-    --secondary-color: #3182ce;
-    --secondary-light: #4299e1;
-    --accent-color: #e53e3e;
-    --accent-light: #fc8181;
+    /* Colores principales - Gradientes modernos */
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --success-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
     
-    /* Colores neutros */
-    --text-color: #2d3748;
-    --text-light: #4a5568;
-    --text-lighter: #718096;
-    --bg-color: #ffffff;
-    --bg-light: #f7fafc;
-    --bg-lighter: #edf2f7;
+    /* Colores sólidos */
+    --primary-color: #667eea;
+    --primary-dark: #5568d3;
+    --secondary-color: #764ba2;
+    --accent-color: #f5576c;
+    
+    /* Neutrales modernos */
+    --text-primary: #1a202c;
+    --text-secondary: #4a5568;
+    --text-muted: #718096;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f7fafc;
+    --bg-tertiary: #edf2f7;
     --border-color: #e2e8f0;
     
-    /* Colores de estado */
-    --success-color: #38a169;
-    --warning-color: #d69e2e;
-    --info-color: #3182ce;
+    /* Sombras modernas */
+    --shadow-sm: 0 2px 8px rgba(102, 126, 234, 0.1);
+    --shadow-md: 0 4px 16px rgba(102, 126, 234, 0.15);
+    --shadow-lg: 0 10px 30px rgba(102, 126, 234, 0.2);
+    --shadow-xl: 0 20px 60px rgba(102, 126, 234, 0.25);
     
-    /* Sombras */
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
-    --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.2);
+    /* Glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.95);
+    --glass-border: rgba(255, 255, 255, 0.3);
     
-    /* Transiciones */
-    --transition-fast: 0.15s ease;
-    --transition-base: 0.3s ease;
-    --transition-slow: 0.5s ease;
-    
-    /* Espaciado */
+    /* Espaciado consistente */
     --spacing-xs: 0.25rem;
     --spacing-sm: 0.5rem;
     --spacing-md: 1rem;
     --spacing-lg: 1.5rem;
     --spacing-xl: 2rem;
     --spacing-2xl: 3rem;
+    --spacing-3xl: 4rem;
+    
+    /* Transiciones */
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Border radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-full: 9999px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
     line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--bg-light);
+    color: var(--text-primary);
+    background: var(--bg-secondary);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -69,17 +79,17 @@ body {
 }
 
 /* ============================================
-   Header y Navegación Mejorados
+   HEADER Y NAVEGACIÓN MODERNOS
    ============================================ */
 .header {
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+    background: var(--primary-gradient);
     color: white;
     padding: 0;
     position: sticky;
     top: 0;
     z-index: 1000;
     box-shadow: var(--shadow-lg);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
 }
 
 .header-content {
@@ -97,22 +107,20 @@ body {
 
 .logo h1 {
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: -0.5px;
-    background: linear-gradient(135deg, #fff 0%, #e2e8f0 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .logo a {
     color: white;
     text-decoration: none;
-    transition: opacity var(--transition-base);
+    transition: all var(--transition-base);
 }
 
 .logo a:hover {
     opacity: 0.9;
+    transform: translateY(-2px);
 }
 
 .main-nav ul {
@@ -126,29 +134,33 @@ body {
     text-decoration: none;
     padding: var(--spacing-sm) var(--spacing-lg);
     transition: all var(--transition-base);
-    border-radius: 8px;
-    font-weight: 500;
+    border-radius: var(--radius-md);
+    font-weight: 600;
     position: relative;
+    overflow: hidden;
 }
 
 .main-nav a::before {
     content: '';
     position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: white;
-    transition: all var(--transition-base);
-    transform: translateX(-50%);
-}
-
-.main-nav a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.15);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--transition-base);
+    border-radius: var(--radius-md);
 }
 
 .main-nav a:hover::before {
-    width: 80%;
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.main-nav a:hover {
+    transform: translateY(-2px);
 }
 
 .menu-toggle {
@@ -170,12 +182,12 @@ body {
 }
 
 /* ============================================
-   Hero Section Mejorado
+   HERO SECTION CON GLASSMORPHISM
    ============================================ */
 .hero {
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 50%, var(--secondary-color) 100%);
+    background: var(--primary-gradient);
     color: white;
-    padding: var(--spacing-2xl) 0;
+    padding: var(--spacing-3xl) 0;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -191,34 +203,74 @@ body {
     background: 
         radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-    pointer-events: none;
+    animation: pulse 15s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
 }
 
 .hero h1 {
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
     margin-bottom: var(--spacing-lg);
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: -1px;
     position: relative;
     z-index: 1;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    animation: slideDown 0.8s ease-out;
 }
 
 .hero p {
-    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
     opacity: 0.95;
     position: relative;
     z-index: 1;
+    animation: slideUp 0.8s ease-out 0.2s both;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ============================================
-   Page Header Mejorado
+   PAGE HEADER MODERNO
    ============================================ */
 .page-header {
-    background: linear-gradient(135deg, var(--bg-lighter) 0%, white 100%);
-    padding: var(--spacing-2xl) 0;
+    background: linear-gradient(135deg, var(--bg-tertiary) 0%, white 100%);
+    padding: var(--spacing-3xl) 0;
     text-align: center;
-    border-bottom: 4px solid var(--secondary-color);
     position: relative;
+    overflow: hidden;
+}
+
+.page-header::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--primary-gradient);
 }
 
 .page-header::after {
@@ -227,42 +279,47 @@ body {
     bottom: -4px;
     left: 50%;
     transform: translateX(-50%);
-    width: 100px;
-    height: 4px;
-    background: var(--accent-color);
-    border-radius: 2px;
+    width: 120px;
+    height: 8px;
+    background: var(--secondary-gradient);
+    border-radius: var(--radius-full);
+    box-shadow: 0 4px 20px rgba(245, 87, 108, 0.4);
 }
 
 .page-header h1 {
-    font-size: clamp(2rem, 4vw, 2.5rem);
-    color: var(--primary-color);
-    margin-bottom: var(--spacing-sm);
-    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    font-weight: 900;
     letter-spacing: -0.5px;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .page-header p {
-    font-size: 1.1rem;
-    color: var(--text-light);
+    font-size: 1.125rem;
+    color: var(--text-secondary);
     max-width: 600px;
     margin: 0 auto;
 }
 
 /* ============================================
-   Botones Mejorados
+   BOTONES MODERNOS CON GRADIENTES
    ============================================ */
 .btn {
     display: inline-block;
     padding: var(--spacing-md) var(--spacing-xl);
-    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--secondary-light) 100%);
+    background: var(--primary-gradient);
     color: white;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     border: none;
     cursor: pointer;
     transition: all var(--transition-base);
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
     box-shadow: var(--shadow-md);
     position: relative;
     overflow: hidden;
@@ -278,25 +335,25 @@ body {
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.3);
     transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
+    transition: width 0.6s ease, height 0.6s ease;
 }
 
 .btn:hover::before {
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
 }
 
 .btn:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     box-shadow: var(--shadow-lg);
 }
 
 .btn:active {
-    transform: translateY(0);
+    transform: translateY(-1px);
 }
 
 .btn-secondary {
-    background: linear-gradient(135deg, #718096 0%, #4a5568 100%);
+    background: var(--secondary-gradient);
 }
 
 .btn-back {
@@ -304,64 +361,76 @@ body {
     align-items: center;
     gap: var(--spacing-sm);
     margin-bottom: var(--spacing-lg);
-    color: var(--secondary-color);
+    color: var(--primary-color);
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
     transition: all var(--transition-base);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
 }
 
 .btn-back:hover {
     gap: var(--spacing-md);
-    color: var(--secondary-light);
+    background: rgba(102, 126, 234, 0.1);
+    transform: translateX(-4px);
 }
 
 /* ============================================
-   Cards de Avisos Mejorados
+   CARDS CON GLASSMORPHISM
    ============================================ */
 .avisos-destacados, 
 .ultimos-avisos, 
-.avisos-seccion {
-    padding: var(--spacing-2xl) 0;
+.avisos-seccion,
+.consejeros-seccion,
+.oficinas-seccion {
+    padding: var(--spacing-3xl) 0;
 }
 
 .avisos-destacados h2, 
-.ultimos-avisos h2 {
+.ultimos-avisos h2,
+.consejeros-seccion h2 {
     text-align: center;
-    font-size: clamp(1.75rem, 3vw, 2rem);
+    font-size: clamp(2rem, 3vw, 2.5rem);
     margin-bottom: var(--spacing-xl);
-    color: var(--primary-color);
-    font-weight: 800;
+    font-weight: 900;
     position: relative;
-    padding-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-lg);
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .avisos-destacados h2::after,
-.ultimos-avisos h2::after {
+.ultimos-avisos h2::after,
+.consejeros-seccion h2::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 60px;
+    width: 80px;
     height: 4px;
-    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
-    border-radius: 2px;
+    background: var(--accent-gradient);
+    border-radius: var(--radius-full);
+    box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
 }
 
 .avisos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: var(--spacing-xl);
     margin-top: var(--spacing-xl);
 }
 
 .aviso-card {
-    background: white;
-    border-radius: 16px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius-lg);
     padding: var(--spacing-xl);
     box-shadow: var(--shadow-md);
     transition: all var(--transition-base);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--glass-border);
     position: relative;
     overflow: hidden;
 }
@@ -373,7 +442,7 @@ body {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    background: var(--primary-gradient);
     transform: scaleX(0);
     transition: transform var(--transition-base);
 }
@@ -388,120 +457,87 @@ body {
 }
 
 .aviso-card.destacado {
-    border-left: 4px solid var(--accent-color);
-    background: linear-gradient(135deg, #fff 0%, #fff5f5 100%);
+    background: linear-gradient(135deg, rgba(245, 87, 108, 0.05) 0%, rgba(255, 255, 255, 0.95) 100%);
+    border-left: 4px solid;
+    border-image: var(--accent-gradient) 1;
 }
 
 .aviso-card h3, 
 .aviso-card h2 {
-    color: var(--primary-color);
+    color: var(--text-primary);
     margin-bottom: var(--spacing-md);
-    font-weight: 700;
-    font-size: 1.25rem;
-    line-height: 1.4;
+    font-weight: 800;
+    font-size: 1.375rem;
+    line-height: 1.3;
 }
 
 .aviso-fecha {
-    color: var(--text-lighter);
+    color: var(--text-muted);
     font-size: 0.875rem;
     margin-bottom: var(--spacing-md);
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
+    font-weight: 600;
 }
 
 .aviso-fecha::before {
     content: '📅';
+    font-size: 1.125rem;
 }
 
 .aviso-excerpt {
     margin: var(--spacing-md) 0;
-    color: var(--text-light);
+    color: var(--text-secondary);
     line-height: 1.7;
 }
 
-.aviso-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-lg);
-    margin-bottom: var(--spacing-md);
-    font-size: 0.875rem;
-    color: var(--text-lighter);
-    padding: var(--spacing-md);
-    background: var(--bg-lighter);
-    border-radius: 8px;
-}
-
-.aviso-meta span {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-}
-
-.aviso-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-md);
-}
-
 .badge-destacado {
-    background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+    background: var(--accent-gradient);
     color: white;
     padding: var(--spacing-xs) var(--spacing-md);
-    border-radius: 20px;
+    border-radius: var(--radius-full);
     font-size: 0.75rem;
-    font-weight: 700;
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     box-shadow: var(--shadow-sm);
     white-space: nowrap;
 }
 
-.aviso-detalle {
-    padding: var(--spacing-2xl) 0;
+.aviso-lista {
+    display: grid;
+    gap: var(--spacing-lg);
 }
 
-.aviso-completo {
+.aviso-item {
     background: white;
-    border-radius: 16px;
-    padding: var(--spacing-2xl);
-    box-shadow: var(--shadow-lg);
-    max-width: 800px;
-    margin: 0 auto;
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+    border-left: 4px solid transparent;
 }
 
-.aviso-completo .aviso-header h1 {
-    font-size: clamp(1.75rem, 3vw, 2.25rem);
-    line-height: 1.3;
-    margin-bottom: var(--spacing-md);
-}
-
-.aviso-contenido {
-    margin-top: var(--spacing-xl);
-    line-height: 1.8;
-    font-size: 1.0625rem;
-    color: var(--text-color);
-}
-
-.aviso-contenido p {
-    margin-bottom: var(--spacing-lg);
+.aviso-item:hover {
+    transform: translateX(8px);
+    box-shadow: var(--shadow-md);
+    border-left-color: var(--primary-color);
 }
 
 /* ============================================
-   Tabs de Oficinas Mejorados
+   TABS MODERNOS
    ============================================ */
 .oficinas-tabs {
     background: white;
-    border-radius: 16px;
+    border-radius: var(--radius-xl);
     box-shadow: var(--shadow-lg);
     overflow: hidden;
 }
 
 .tabs-nav {
     display: flex;
-    background: linear-gradient(135deg, var(--bg-lighter) 0%, white 100%);
+    background: linear-gradient(135deg, var(--bg-tertiary) 0%, white 100%);
     border-bottom: 2px solid var(--border-color);
     overflow-x: auto;
     scrollbar-width: thin;
@@ -512,20 +548,20 @@ body {
 }
 
 .tabs-nav::-webkit-scrollbar-thumb {
-    background: var(--secondary-color);
-    border-radius: 4px;
+    background: var(--primary-gradient);
+    border-radius: var(--radius-full);
 }
 
 .tab-btn {
     flex: 1;
-    min-width: 150px;
+    min-width: 160px;
     padding: var(--spacing-lg) var(--spacing-xl);
     background: none;
     border: none;
     cursor: pointer;
     font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-light);
+    font-weight: 700;
+    color: var(--text-secondary);
     transition: all var(--transition-base);
     white-space: nowrap;
     position: relative;
@@ -538,18 +574,18 @@ body {
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    background: var(--primary-gradient);
     transform: scaleX(0);
     transition: transform var(--transition-base);
 }
 
 .tab-btn:hover {
-    background-color: rgba(49, 130, 206, 0.05);
-    color: var(--secondary-color);
+    background-color: rgba(102, 126, 234, 0.05);
+    color: var(--primary-color);
 }
 
 .tab-btn.active {
-    color: var(--secondary-color);
+    color: var(--primary-color);
     background-color: white;
 }
 
@@ -561,6 +597,29 @@ body {
     padding: var(--spacing-2xl);
 }
 
+.tab-pane {
+    display: none;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   EMPLEADOS Y CONSEJEROS
+   ============================================ */
 .empleados-lista {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -569,44 +628,42 @@ body {
 }
 
 .empleado-card {
-    background: linear-gradient(135deg, var(--bg-lighter) 0%, white 100%);
+    background: linear-gradient(135deg, var(--bg-tertiary) 0%, white 100%);
     padding: var(--spacing-lg);
-    border-radius: 12px;
-    border-left: 4px solid var(--secondary-color);
+    border-radius: var(--radius-md);
+    border-left: 4px solid;
+    border-image: var(--primary-gradient) 1;
     transition: all var(--transition-base);
     box-shadow: var(--shadow-sm);
 }
 
 .empleado-card:hover {
-    transform: translateX(4px);
+    transform: translateX(8px);
     box-shadow: var(--shadow-md);
 }
 
 .empleado-card h4 {
-    color: var(--primary-color);
+    color: var(--text-primary);
     margin-bottom: var(--spacing-sm);
-    font-weight: 700;
+    font-weight: 800;
 }
 
 .empleado-card .cargo {
-    color: var(--secondary-color);
+    color: var(--primary-color);
     font-style: italic;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: var(--spacing-sm);
 }
 
-/* ============================================
-   Consejeros Mejorados
-   ============================================ */
 .consejeros-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: var(--spacing-xl);
 }
 
 .consejero-card {
     background: white;
-    border-radius: 16px;
+    border-radius: var(--radius-xl);
     overflow: hidden;
     box-shadow: var(--shadow-lg);
     transition: all var(--transition-base);
@@ -614,15 +671,15 @@ body {
 }
 
 .consejero-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-12px);
     box-shadow: var(--shadow-xl);
 }
 
 .consejero-foto {
-    height: 280px;
+    height: 300px;
     overflow: hidden;
     position: relative;
-    background: linear-gradient(135deg, var(--primary-light), var(--secondary-color));
+    background: var(--primary-gradient);
 }
 
 .consejero-foto img {
@@ -633,7 +690,7 @@ body {
 }
 
 .consejero-card:hover .consejero-foto img {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .consejero-info {
@@ -641,60 +698,37 @@ body {
 }
 
 .consejero-info h3 {
-    color: var(--primary-color);
+    color: var(--text-primary);
     margin-bottom: var(--spacing-sm);
-    font-size: 1.25rem;
-    font-weight: 700;
+    font-size: 1.375rem;
+    font-weight: 800;
 }
 
 .consejero-info .cargo {
-    color: var(--secondary-color);
-    font-weight: 600;
-    margin-bottom: var(--spacing-lg);
-    font-size: 0.9375rem;
-}
-
-.instituciones-asignadas {
-    margin-top: var(--spacing-lg);
-    padding-top: var(--spacing-lg);
-    border-top: 2px solid var(--border-color);
-}
-
-.instituciones-asignadas h4 {
     color: var(--primary-color);
-    margin-bottom: var(--spacing-md);
     font-weight: 700;
-    font-size: 0.9375rem;
-}
-
-.instituciones-asignadas ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-.instituciones-asignadas li {
-    padding: var(--spacing-sm) 0;
-    color: var(--text-light);
-    position: relative;
-    padding-left: var(--spacing-lg);
-}
-
-.instituciones-asignadas li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--success-color);
-    font-weight: bold;
+    margin-bottom: var(--spacing-lg);
 }
 
 /* ============================================
-   Footer Mejorado
+   FOOTER MODERNO
    ============================================ */
 .footer {
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+    background: var(--primary-gradient);
     color: white;
-    padding: var(--spacing-2xl) 0 var(--spacing-lg);
-    margin-top: var(--spacing-2xl);
+    padding: var(--spacing-3xl) 0 var(--spacing-lg);
+    margin-top: var(--spacing-3xl);
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--accent-gradient);
 }
 
 .footer-content {
@@ -706,8 +740,8 @@ body {
 
 .footer-section h3 {
     margin-bottom: var(--spacing-lg);
-    font-weight: 700;
-    font-size: 1.125rem;
+    font-weight: 800;
+    font-size: 1.25rem;
 }
 
 .footer-section ul {
@@ -738,55 +772,48 @@ body {
 }
 
 /* ============================================
-   Empty State
+   EMPTY STATE
    ============================================ */
 .empty-state {
     text-align: center;
-    padding: var(--spacing-2xl);
-    color: var(--text-lighter);
-    background: var(--bg-lighter);
-    border-radius: 12px;
+    padding: var(--spacing-3xl);
+    color: var(--text-muted);
+    background: linear-gradient(135deg, var(--bg-tertiary) 0%, white 100%);
+    border-radius: var(--radius-lg);
     border: 2px dashed var(--border-color);
 }
 
 .empty-state::before {
     content: '📭';
     display: block;
-    font-size: 3rem;
+    font-size: 4rem;
     margin-bottom: var(--spacing-md);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 /* ============================================
-   Utilidades
+   UTILIDADES
    ============================================ */
 .text-center {
     text-align: center;
     margin: var(--spacing-xl) 0;
 }
 
-/* Animaciones */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.aviso-card,
-.consejero-card,
-.empleado-card {
-    animation: fadeIn 0.6s ease-out;
-}
-
 /* ============================================
-   Responsive Mejorado
+   RESPONSIVE
    ============================================ */
 @media (max-width: 768px) {
     :root {
+        --spacing-3xl: 2.5rem;
         --spacing-2xl: 2rem;
         --spacing-xl: 1.5rem;
     }
@@ -801,7 +828,7 @@ body {
         top: 100%;
         left: 0;
         right: 0;
-        background: var(--primary-dark);
+        background: var(--primary-gradient);
         padding: var(--spacing-md);
         box-shadow: var(--shadow-lg);
     }
@@ -818,7 +845,7 @@ body {
     .main-nav a {
         display: block;
         padding: var(--spacing-md);
-        border-radius: 8px;
+        border-radius: var(--radius-md);
     }
     
     .main-nav a::before {
