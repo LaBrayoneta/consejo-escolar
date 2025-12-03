@@ -1,7 +1,7 @@
 <?php
 class Controller {
     
-    // Cargar vista
+     // Cargar vista
     protected function view($view, $data = []) {
         extract($data);
         
@@ -10,11 +10,10 @@ class Controller {
             require_once '../app/views/' . $view . '.php';
         } else {
             require_once '../app/views/layout/header.php';
-            require_once '../app/views/layout/getById.php';
+            require_once '../app/views/' . $view . '.php';
             require_once '../app/views/layout/footer.php';
         }
     }
-
     // Redireccionar
     protected function redirect($url) {
         header('Location: ' . BASE_URL . $url);
