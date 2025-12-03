@@ -1,5 +1,4 @@
 <?php
-// Este archivo debe crearse en: app/controllers/AdminInstitucionesController.php
 
 class AdminInstitucionesController extends Controller {
     

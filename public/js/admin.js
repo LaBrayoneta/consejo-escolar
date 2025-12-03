@@ -1,7 +1,3 @@
-// ============================================
-// Admin JavaScript - Consejo Escolar
-// ============================================
-
 document.addEventListener('DOMContentLoaded', function() {
     initSidebarToggle();
     initSearch();

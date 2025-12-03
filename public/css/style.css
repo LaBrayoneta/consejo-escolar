@@ -1,8 +1,3 @@
-/* ============================================
-   CSS UNIFICADO - Consejo Escolar 2025
-   Diseño Moderno con Gradientes y Glassmorphism
-   ============================================ */
-
 :root {
     /* Colores principales - Gradientes modernos */
     --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -887,4 +882,31 @@ body {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
+}
+
+/* ============================================
+   FIX: Ocultar elementos del admin en público
+   ============================================ */
+
+/* Asegurarse que el sidebar-toggle del admin NO aparezca */
+.sidebar-toggle {
+    display: none !important;
+}
+
+/* Solo mostrar el menu-toggle en móvil */
+.menu-toggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/* Ocultar cualquier elemento de admin que se filtre */
+.admin-sidebar,
+.admin-header,
+.admin-content {
+    display: none !important;
 }

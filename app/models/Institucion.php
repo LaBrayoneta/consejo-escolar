@@ -1,5 +1,4 @@
 <?php
-// Este archivo debe crearse en: app/models/Institucion.php
 
 class Institucion extends Model {
     protected $table = 'instituciones';

@@ -1,6 +1,4 @@
 <?php
-// Este archivo necesita ser creado en: app/controllers/AdminConsejerosController.php
-
 class AdminConsejerosController extends Controller {
     
     public function index() {

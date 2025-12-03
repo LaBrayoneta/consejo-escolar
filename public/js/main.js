@@ -1,7 +1,3 @@
-// ============================================
-// JavaScript Mejorado - Consejo Escolar
-// ============================================
-
 document.addEventListener('DOMContentLoaded', function() {
     
     // Inicializar funcionalidades

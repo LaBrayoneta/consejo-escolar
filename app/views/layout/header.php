@@ -16,6 +16,7 @@
                     </a>
                 </div>
                 
+                <!-- Botón de menú móvil (NO el sidebar-toggle del admin) -->
                 <button class="menu-toggle" id="menuToggle">
                     <span></span>
                     <span></span>
@@ -28,7 +29,7 @@
                         <li><a href="<?php echo BASE_URL; ?>avisos">Avisos</a></li>
                         <li><a href="<?php echo BASE_URL; ?>oficinas">Oficinas</a></li>
                         <li><a href="<?php echo BASE_URL; ?>sobre-nosotros">Sobre Nosotros</a></li>
-                        <li><a href="<?php echo ADMIN_URL; ?>">Admin</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>admin">Admin</a></li>
                     </ul>
                 </nav>
             </div>

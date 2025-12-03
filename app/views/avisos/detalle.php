@@ -1,5 +1,3 @@
-<!-- Este archivo debe estar en: app/views/avisos/detalle.php -->
-
 <section class="page-header">
     <div class="container">
         <a href="<?php echo BASE_URL; ?>avisos" class="btn-back">← Volver a avisos</a>

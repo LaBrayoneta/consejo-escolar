@@ -1,5 +1,3 @@
-<!-- Este archivo debe estar en: app/views/avisos/index.php -->
-
 <section class="page-header">
     <div class="container">
         <h1>Avisos y Novedades</h1>

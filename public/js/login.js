@@ -1,7 +1,3 @@
-// ============================================
-// Login Page - Consejo Escolar
-// ============================================
-
 document.addEventListener('DOMContentLoaded', function() {
     
     initPasswordToggle();

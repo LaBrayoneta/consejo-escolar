@@ -2,12 +2,10 @@
 class Consejero extends Model {
     protected $table = 'consejeros';
 
-    // Obtener consejeros activos
     public function getActivos() {
         return $this->getAll('activo = 1', 'orden ASC, nombre ASC');
     }
 
-    // Obtener consejero con instituciones asignadas
     public function getConInstituciones($id) {
         $consejero = $this->getById($id);
         
@@ -27,7 +25,6 @@ class Consejero extends Model {
         return $consejero;
     }
 
-    // Obtener todos los consejeros con instituciones
     public function getAllConInstituciones() {
         $consejeros = $this->getActivos();
         
