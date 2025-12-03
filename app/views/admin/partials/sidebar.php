@@ -13,7 +13,6 @@
             <li><a href="<?php echo BASE_URL; ?>admin/consejeros">👔 Consejeros</a></li>
             <li><a href="<?php echo BASE_URL; ?>admin/instituciones">🏫 Instituciones</a></li>
             <li><a href="<?php echo BASE_URL; ?>admin/informacion">📋 Información Institucional</a></li>
-            <li><a href="<?php echo BASE_URL; ?>admin/usuarios">👥 Usuarios</a></li>
         </ul>
     </nav>
     

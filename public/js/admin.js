@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initSearch();
     initFilters();
     initAlertDismiss();
+    initDeleteButtons(); // NUEVO: Inicializar botones de eliminar
 });
 
 // ============================================
@@ -16,8 +17,6 @@ function initSidebarToggle() {
     
     sidebarToggle.addEventListener('click', function() {
         sidebar.classList.toggle('active');
-        
-        // Animar el botón
         this.classList.toggle('active');
     });
     
@@ -37,35 +36,53 @@ function initSidebarToggle() {
 // ============================================
 function initSearch() {
     const searchInput = document.getElementById('searchInput');
-    const avisosGrid = document.getElementById('avisosGrid');
+    const grids = [
+        document.getElementById('avisosGrid'),
+        document.getElementById('oficinasgrid'),
+        document.getElementById('consejerosGrid'),
+        document.getElementById('institucionesGrid'),
+        document.getElementById('seccionesGrid')
+    ].filter(grid => grid !== null); // Filtrar los que existen
+    
     const emptySearch = document.getElementById('emptySearch');
     
-    if (!searchInput || !avisosGrid) return;
+    if (!searchInput || grids.length === 0) return;
     
     searchInput.addEventListener('input', debounce(function() {
         const searchTerm = this.value.toLowerCase().trim();
-        const cards = avisosGrid.querySelectorAll('.aviso-card-admin');
-        let visibleCount = 0;
+        let totalVisibleCount = 0;
         
-        cards.forEach(card => {
-            const title = card.querySelector('.aviso-title').textContent.toLowerCase();
-            const excerpt = card.querySelector('.aviso-excerpt').textContent.toLowerCase();
+        grids.forEach(grid => {
+            const cards = grid.querySelectorAll('.aviso-card-admin');
+            let visibleCount = 0;
             
-            if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
-                card.style.display = '';
-                visibleCount++;
+            cards.forEach(card => {
+                const title = card.querySelector('.aviso-title')?.textContent.toLowerCase() || '';
+                const excerpt = card.querySelector('.aviso-excerpt')?.textContent.toLowerCase() || '';
+                
+                if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
+                    card.style.display = '';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            totalVisibleCount += visibleCount;
+            
+            // Mostrar/ocultar grid completo
+            if (visibleCount === 0 && searchTerm !== '') {
+                grid.style.display = 'none';
             } else {
-                card.style.display = 'none';
+                grid.style.display = 'grid';
             }
         });
         
         // Mostrar/ocultar empty state
         if (emptySearch) {
-            if (visibleCount === 0 && searchTerm !== '') {
-                avisosGrid.style.display = 'none';
+            if (totalVisibleCount === 0 && searchTerm !== '') {
                 emptySearch.style.display = 'block';
             } else {
-                avisosGrid.style.display = 'grid';
                 emptySearch.style.display = 'none';
             }
         }
@@ -77,35 +94,107 @@ function initSearch() {
 // ============================================
 function initFilters() {
     const filterSelect = document.getElementById('filterStatus');
-    const avisosGrid = document.getElementById('avisosGrid');
+    const filterNivel = document.getElementById('filterNivel');
     
-    if (!filterSelect || !avisosGrid) return;
-    
-    filterSelect.addEventListener('change', function() {
-        const filterValue = this.value;
-        const cards = avisosGrid.querySelectorAll('.aviso-card-admin');
+    if (filterSelect) {
+        const grids = [
+            document.getElementById('avisosGrid'),
+            document.getElementById('oficinasgrid'),
+            document.getElementById('consejerosGrid'),
+            document.getElementById('institucionesGrid')
+        ].filter(grid => grid !== null);
         
-        cards.forEach(card => {
-            const status = card.dataset.status;
-            const destacado = card.dataset.destacado;
+        filterSelect.addEventListener('change', function() {
+            const filterValue = this.value;
             
-            switch(filterValue) {
-                case 'all':
-                    card.style.display = '';
-                    break;
-                case 'active':
-                    card.style.display = status === 'active' ? '' : 'none';
-                    break;
-                case 'inactive':
-                    card.style.display = status === 'inactive' ? '' : 'none';
-                    break;
-                case 'destacado':
-                    card.style.display = destacado === '1' ? '' : 'none';
-                    break;
-            }
+            grids.forEach(grid => {
+                const cards = grid.querySelectorAll('.aviso-card-admin');
+                
+                cards.forEach(card => {
+                    const status = card.dataset.status;
+                    const destacado = card.dataset.destacado;
+                    
+                    switch(filterValue) {
+                        case 'all':
+                            card.style.display = '';
+                            break;
+                        case 'active':
+                            card.style.display = status === 'active' ? '' : 'none';
+                            break;
+                        case 'inactive':
+                            card.style.display = status === 'inactive' ? '' : 'none';
+                            break;
+                        case 'destacado':
+                            card.style.display = destacado === '1' ? '' : 'none';
+                            break;
+                    }
+                });
+            });
         });
+    }
+    
+    // Filtro por nivel (para instituciones)
+    if (filterNivel) {
+        const grid = document.getElementById('institucionesGrid');
+        if (grid) {
+            filterNivel.addEventListener('change', function() {
+                const nivel = this.value;
+                const cards = grid.querySelectorAll('[data-nivel]');
+                
+                cards.forEach(card => {
+                    if(nivel === 'all' || card.dataset.nivel === nivel) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        }
+    }
+}
+
+// ============================================
+// DELETE BUTTONS - NUEVO
+// ============================================
+function initDeleteButtons() {
+    // Interceptar todos los onclick de los botones de eliminar
+    const deleteButtons = document.querySelectorAll('.btn-delete');
+    
+    deleteButtons.forEach(button => {
+        // Si el botón tiene un onclick inline, prevenir ejecución y manejar aquí
+        const onclickAttr = button.getAttribute('onclick');
+        if (onclickAttr) {
+            // Remover el onclick inline
+            button.removeAttribute('onclick');
+            
+            // Agregar event listener
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Ejecutar la función original del onclick
+                try {
+                    // Evaluar el código del onclick en el contexto global
+                    const func = new Function(onclickAttr);
+                    func.call(this);
+                } catch (error) {
+                    console.error('Error ejecutando función de eliminación:', error);
+                }
+            });
+        }
     });
 }
+
+// ============================================
+// FUNCIÓN GLOBAL confirmarEliminar
+// ============================================
+window.confirmarEliminar = function(id, nombre, tipo) {
+    // Mensaje de confirmación mejorado
+    const tipoTexto = tipo || 'elemento';
+    const mensaje = `¿Estás seguro de eliminar "${nombre}"?\n\n⚠️ Esta acción no se puede deshacer.`;
+    
+    return confirm(mensaje);
+};
 
 // ============================================
 // Alert Dismiss
@@ -114,16 +203,36 @@ function initAlertDismiss() {
     const alerts = document.querySelectorAll('.alert');
     
     alerts.forEach(alert => {
-        // Crear botón de cerrar si no existe
         if (!alert.querySelector('.alert-close')) {
             const closeBtn = document.createElement('button');
             closeBtn.className = 'alert-close';
             closeBtn.innerHTML = '×';
             closeBtn.setAttribute('aria-label', 'Cerrar alerta');
+            closeBtn.style.cssText = `
+                position: absolute;
+                top: 8px;
+                right: 12px;
+                background: none;
+                border: none;
+                font-size: 24px;
+                line-height: 1;
+                cursor: pointer;
+                opacity: 0.6;
+                transition: opacity 0.2s;
+            `;
+            alert.style.position = 'relative';
             alert.appendChild(closeBtn);
             
             closeBtn.addEventListener('click', function() {
                 dismissAlert(alert);
+            });
+            
+            closeBtn.addEventListener('mouseenter', function() {
+                this.style.opacity = '1';
+            });
+            
+            closeBtn.addEventListener('mouseleave', function() {
+                this.style.opacity = '0.6';
             });
         }
         
@@ -167,11 +276,6 @@ function formatDate(dateString) {
     return new Date(dateString).toLocaleDateString('es-AR', options);
 }
 
-// Confirmación de acciones
-function confirm(message) {
-    return window.confirm(message);
-}
-
 // ============================================
 // Form Validation
 // ============================================
@@ -183,7 +287,6 @@ function initFormValidation() {
             if (!validateForm(this)) {
                 e.preventDefault();
                 
-                // Scroll al primer error
                 const firstError = this.querySelector('.form-error:not([style*="display: none"])');
                 if (firstError) {
                     firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -191,7 +294,6 @@ function initFormValidation() {
             }
         });
         
-        // Validación en tiempo real
         const inputs = form.querySelectorAll('input, textarea, select');
         inputs.forEach(input => {
             input.addEventListener('blur', function() {
@@ -225,16 +327,13 @@ function validateField(field) {
     let isValid = true;
     let errorMessage = '';
     
-    // Limpiar errores previos
     clearFieldError(field);
     
-    // Validar campo requerido
     if (field.hasAttribute('required') && value === '') {
         isValid = false;
         errorMessage = 'Este campo es obligatorio';
     }
     
-    // Validar email
     if (field.type === 'email' && value !== '') {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(value)) {
@@ -243,7 +342,6 @@ function validateField(field) {
         }
     }
     
-    // Validar longitud mínima
     if (field.hasAttribute('minlength')) {
         const minLength = parseInt(field.getAttribute('minlength'));
         if (value.length < minLength && value.length > 0) {
@@ -252,7 +350,6 @@ function validateField(field) {
         }
     }
     
-    // Mostrar error si existe
     if (!isValid) {
         showFieldError(field, errorMessage);
     }
@@ -270,6 +367,12 @@ function showFieldError(field, message) {
         if (!errorElement) {
             errorElement = document.createElement('div');
             errorElement.className = 'form-error';
+            errorElement.style.cssText = `
+                color: #e53e3e;
+                font-size: 13px;
+                margin-top: 6px;
+                font-weight: 600;
+            `;
             formGroup.appendChild(errorElement);
         }
         
@@ -298,3 +401,7 @@ window.adminUtils = {
     formatDate,
     debounce
 };
+
+// Log de confirmación
+console.log('✓ Admin.js cargado correctamente');
+console.log('✓ Función confirmarEliminar disponible globalmente');
