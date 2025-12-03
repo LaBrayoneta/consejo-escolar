@@ -7,6 +7,7 @@ class AdminController extends Controller {
         $avisoModel = new Aviso();
         $oficinaModel = new Oficina();
         $consejeroModel = new Consejero();
+        $infoModel = new InformacionInstitucional();
         
         $data = [
             'title' => 'Panel de Administración',
@@ -14,7 +15,8 @@ class AdminController extends Controller {
             'stats' => [
                 'total_avisos' => count($avisoModel->getAll()),
                 'total_oficinas' => count($oficinaModel->getAll()),
-                'total_consejeros' => count($consejeroModel->getAll())
+                'total_consejeros' => count($consejeroModel->getAll()),
+                'total_info_institucional' => count($infoModel->getAll())
             ]
         ];
         

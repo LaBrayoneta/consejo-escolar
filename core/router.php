@@ -1,4 +1,4 @@
-+<?php
+<?php
 class Router {
     private $controller = 'HomeController';
     private $method = 'index';

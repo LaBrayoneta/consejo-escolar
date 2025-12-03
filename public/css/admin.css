@@ -907,3 +907,200 @@ body {
         justify-content: center;
     }
 }
+
+/* ============================================
+   SIDEBAR FOOTER - Agregar al final de admin.css
+   ============================================ */
+
+.sidebar-footer {
+    padding: 16px;
+    background: rgba(0,0,0,0.2);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: sticky;
+    bottom: 0;
+}
+
+.footer-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 600;
+    font-size: 14px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.footer-link:hover::before {
+    opacity: 1;
+}
+
+/* Estilo para "Ver sitio público" */
+.footer-link-primary {
+    background: linear-gradient(135deg, rgba(79, 172, 254, 0.2) 0%, rgba(0, 242, 254, 0.2) 100%);
+    border-color: rgba(79, 172, 254, 0.3);
+}
+
+.footer-link-primary:hover {
+    background: linear-gradient(135deg, rgba(79, 172, 254, 0.35) 0%, rgba(0, 242, 254, 0.35) 100%);
+    border-color: rgba(79, 172, 254, 0.6);
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(79, 172, 254, 0.3);
+}
+
+/* Estilo para "Cerrar Sesión" */
+.footer-link-danger {
+    background: linear-gradient(135deg, rgba(245, 101, 101, 0.2) 0%, rgba(229, 62, 62, 0.2) 100%);
+    border-color: rgba(245, 101, 101, 0.3);
+}
+
+.footer-link-danger:hover {
+    background: linear-gradient(135deg, rgba(245, 101, 101, 0.35) 0%, rgba(229, 62, 62, 0.35) 100%);
+    border-color: rgba(245, 101, 101, 0.6);
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(245, 101, 101, 0.3);
+}
+
+.link-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-link:hover .link-icon {
+    background: rgba(255,255,255,0.25);
+    transform: scale(1.1) rotate(5deg);
+}
+
+.link-text {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    white-space: nowrap;
+}
+
+.link-arrow {
+    font-size: 18px;
+    font-weight: 800;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-link:hover .link-arrow {
+    opacity: 1;
+    transform: translateX(4px);
+}
+
+/* Animación de brillo al hover */
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.footer-link::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.footer-link:hover::after {
+    animation: shine 0.8s ease-in-out;
+}
+
+/* Estado activo al hacer click */
+.footer-link:active {
+    transform: scale(0.98);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .sidebar-footer {
+        padding: 12px;
+        gap: 6px;
+    }
+    
+    .footer-link {
+        padding: 12px 14px;
+        font-size: 13px;
+        gap: 10px;
+    }
+    
+    .link-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 18px;
+    }
+    
+    .link-arrow {
+        font-size: 16px;
+    }
+}
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .footer-link {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+    
+    .link-text {
+        font-size: 12px;
+    }
+}
+
+/* Mejorar contraste en modo oscuro */
+@media (prefers-color-scheme: dark) {
+    .footer-link {
+        border-color: rgba(255,255,255,0.15);
+    }
+    
+    .footer-link-primary {
+        background: linear-gradient(135deg, rgba(79, 172, 254, 0.25) 0%, rgba(0, 242, 254, 0.25) 100%);
+    }
+    
+    .footer-link-danger {
+        background: linear-gradient(135deg, rgba(245, 101, 101, 0.25) 0%, rgba(229, 62, 62, 0.25) 100%);
+    }
+}
