@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>css/admin.css">
 </head>
 <body class="admin-page">
-    <?php include '../app/views/admin/partials/sidebar.php'; ?>
+    <?php include __DIR__ . '/../partials/sidebar.php'; ?>
     
     <div class="admin-content">
         <header class="admin-header">
@@ -61,17 +61,25 @@
                     <div class="form-actions">
                         <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                         <a href="<?php echo BASE_URL; ?>admin/avisos" class="btn btn-secondary">Cancelar</a>
-                        <a 
-                            href="<?php echo BASE_URL; ?>admin/eliminar_aviso/<?php echo $aviso['id']; ?>" 
+                        <button 
+                            type="button"
                             class="btn btn-danger"
-                            onclick="return confirmarEliminacion('¿Está seguro de eliminar este aviso?')"
+                            onclick="confirmarEliminar(<?php echo $aviso['id']; ?>, '<?php echo htmlspecialchars($aviso['titulo'], ENT_QUOTES); ?>')"
                         >
                             Eliminar
-                        </a>
+                        </button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+    <script>
+        function confirmarEliminar(id, titulo) {
+            if(confirm(`¿Estás seguro de eliminar el aviso "${titulo}"?\n\nEsta acción no se puede deshacer.`)) {
+                window.location.href = '<?php echo BASE_URL; ?>admin/eliminar_aviso/' + id;
+            }
+        }
+    </script>
 </body>
 </html>

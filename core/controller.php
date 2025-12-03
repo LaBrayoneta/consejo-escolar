@@ -10,7 +10,7 @@ class Controller {
             require_once '../app/views/' . $view . '.php';
         } else {
             require_once '../app/views/layout/header.php';
-            require_once '../app/views/' . $view . '.php';
+            require_once '../app/views/layout/getById.php';
             require_once '../app/views/layout/footer.php';
         }
     }

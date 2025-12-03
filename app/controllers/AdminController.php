@@ -73,10 +73,12 @@ class AdminController extends Controller {
     }
     
     public function crear_aviso() {
-        $this->validateCSRF();
         $this->requireAuth();
         
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Validar CSRF solo en POST
+            $this->validateCSRF();
+            
             $avisoModel = new Aviso();
             
             $data = [
@@ -110,6 +112,8 @@ class AdminController extends Controller {
         }
         
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->validateCSRF();
+            
             $data = [
                 'titulo' => $_POST['titulo'],
                 'contenido' => $_POST['contenido'],
@@ -131,15 +135,12 @@ class AdminController extends Controller {
     }
     
     public function eliminar_aviso($id) {
-        $this->requireAdmin();
         $this->requireAuth();
+        $this->requireAdmin();
         
         $avisoModel = new Aviso();
         $avisoModel->delete($id);
         
         $this->redirect('admin/avisos');
-
-        
     }
 }
-
