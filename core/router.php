@@ -16,7 +16,6 @@ class Router {
 
         // Verificar que el controlador existe
         if(!class_exists($this->controller)) {
-            // Si el controlador no existe, mostrar 404
             $this->controller = 'HomeController';
             $this->method = 'index';
             $this->params = [];
@@ -46,11 +45,30 @@ class Router {
             return;
         }
 
+        // Mapeo especial para rutas de eliminación y acciones
+        $specialRoutes = [
+            'eliminar_aviso' => ['AdminController', 'eliminar_aviso'],
+            'editar_aviso' => ['AdminController', 'editar_aviso'],
+            'crear_aviso' => ['AdminController', 'crear_aviso'],
+            'avisos' => ['AdminController', 'avisos'],
+        ];
+
+        // Verificar si es una ruta especial
+        if(isset($specialRoutes[$url[0]])) {
+            list($controllerName, $methodName) = $specialRoutes[$url[0]];
+            $this->controller = $controllerName;
+            $this->method = $methodName;
+            require_once '../app/controllers/' . $controllerName . '.php';
+            unset($url[0]);
+            $this->params = $url ? array_values($url) : [];
+            return;
+        }
+
         // Construir el nombre del controlador admin
         $controllerName = 'Admin' . ucfirst($url[0]) . 'Controller';
         $controllerFile = '../app/controllers/' . $controllerName . '.php';
 
-        // Verificar si existe el controlador específico (ej: AdminOficinasController)
+        // Verificar si existe el controlador específico
         if(file_exists($controllerFile)) {
             $this->controller = $controllerName;
             require_once $controllerFile;
@@ -66,7 +84,6 @@ class Router {
             $this->controller = 'AdminController';
             require_once '../app/controllers/AdminController.php';
             
-            // El primer elemento después de 'admin' es el método
             if(isset($url[0])) {
                 $this->method = $url[0];
                 unset($url[0]);
@@ -78,30 +95,44 @@ class Router {
     }
 
     private function handlePublicRoute($url) {
-        // Verificar controlador público
-        if(isset($url[0])) {
-            $controllerName = ucfirst($url[0]) . 'Controller';
-            $controllerFile = '../app/controllers/' . $controllerName . '.php';
-            
-            if(file_exists($controllerFile)) {
-                $this->controller = $controllerName;
-                require_once $controllerFile;
-                unset($url[0]);
+        // Mapa de URLs a controladores
+        $routeMap = [
+            'sobre-nosotros' => 'SobreNosotrosController',
+            'avisos' => 'AvisosController',
+            'oficinas' => 'OficinasController',
+        ];
+
+        if(isset($url[0]) && !empty($url[0])) {
+            if(isset($routeMap[$url[0]])) {
+                $controllerName = $routeMap[$url[0]];
+                $controllerFile = '../app/controllers/' . $controllerName . '.php';
+                
+                if(file_exists($controllerFile)) {
+                    $this->controller = $controllerName;
+                    require_once $controllerFile;
+                    unset($url[0]);
+                }
+            } else {
+                $controllerName = ucfirst($url[0]) . 'Controller';
+                $controllerFile = '../app/controllers/' . $controllerName . '.php';
+                
+                if(file_exists($controllerFile)) {
+                    $this->controller = $controllerName;
+                    require_once $controllerFile;
+                    unset($url[0]);
+                }
             }
         }
 
-        // Si no se encontró controlador, cargar HomeController
-        if(!isset($controllerFile) || !file_exists($controllerFile)) {
+        if($this->controller === 'HomeController') {
             require_once '../app/controllers/HomeController.php';
         }
 
-        // Verificar método
         if(isset($url[1])) {
             $this->method = $url[1];
             unset($url[1]);
         }
 
-        // Obtener parámetros
         $this->params = $url ? array_values($url) : [];
     }
 

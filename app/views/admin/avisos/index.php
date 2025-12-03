@@ -34,14 +34,25 @@
             <!-- Stats Cards -->
             <div class="stats-row">
                 <div class="stat-card stat-primary">
-                    <div class="stat-icon">📝</div>
+                    <div class="stat-icon-wrapper">
+                        <div class="stat-icon">📝</div>
+                        <div class="stat-badge"><?php echo count($avisos); ?></div>
+                    </div>
                     <div class="stat-info">
                         <h3>Total Avisos</h3>
                         <p class="stat-number"><?php echo count($avisos); ?></p>
+                        <div class="stat-footer">
+                            <a href="<?php echo BASE_URL; ?>admin/avisos">Ver todos →</a>
+                        </div>
                     </div>
                 </div>
                 <div class="stat-card stat-warning">
-                    <div class="stat-icon">⭐</div>
+                    <div class="stat-icon-wrapper">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-badge">
+                            <?php echo count(array_filter($avisos, function($a) { return $a['destacado']; })); ?>
+                        </div>
+                    </div>
                     <div class="stat-info">
                         <h3>Destacados</h3>
                         <p class="stat-number">
@@ -50,7 +61,9 @@
                     </div>
                 </div>
                 <div class="stat-card stat-success">
-                    <div class="stat-icon">✓</div>
+                    <div class="stat-icon-wrapper">
+                        <div class="stat-icon">✓</div>
+                    </div>
                     <div class="stat-info">
                         <h3>Activos</h3>
                         <p class="stat-number">
@@ -127,9 +140,10 @@
                                        title="Editar">
                                         ✏️
                                     </a>
-                                    <button onclick="confirmarEliminar(<?php echo $aviso['id']; ?>, '<?php echo htmlspecialchars($aviso['titulo'], ENT_QUOTES); ?>')" 
-                                            class="btn-icon btn-delete" 
-                                            title="Eliminar">
+                                    <button 
+                                        onclick="if(confirm('¿Estás seguro de eliminar el aviso &quot;<?php echo htmlspecialchars(addslashes($aviso['titulo'])); ?>&quot;?\n\nEsta acción no se puede deshacer.')) { window.location.href='<?php echo BASE_URL; ?>admin/eliminar_aviso/<?php echo $aviso['id']; ?>'; }"
+                                        class="btn-icon btn-delete" 
+                                        title="Eliminar">
                                         🗑️
                                     </button>
                                 </div>
@@ -157,13 +171,11 @@
         </div>
     </div>
 
-    <script src="<?php echo BASE_URL; ?>js/admin.js"></script>
     <script>
-        function confirmarEliminar(id, titulo) {
-            if(confirm(`¿Estás seguro de eliminar el aviso "${titulo}"?\n\nEsta acción no se puede deshacer.`)) {
-                window.location.href = '<?php echo BASE_URL; ?>admin/eliminar_aviso/' + id;
-            }
-        }
+        // Definir BASE_URL para JavaScript
+        const BASE_URL = '<?php echo BASE_URL; ?>';
     </script>
+    <script src="<?php echo BASE_URL; ?>js/admin.js"></script>
+    <script src="<?php echo BASE_URL; ?>js/admin-delete.js"></script>
 </body>
 </html>

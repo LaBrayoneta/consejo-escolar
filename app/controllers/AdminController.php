@@ -60,7 +60,10 @@ class AdminController extends Controller {
         $this->redirect('admin/login');
     }
     
-    // CRUD de Avisos
+    // ============================================
+    // CRUD DE AVISOS
+    // ============================================
+    
     public function avisos() {
         $this->requireAuth();
         
@@ -78,20 +81,23 @@ class AdminController extends Controller {
         $this->requireAuth();
         
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Validar CSRF solo en POST
             $this->validateCSRF();
             
             $avisoModel = new Aviso();
             
             $data = [
-                'titulo' => $_POST['titulo'],
-                'contenido' => $_POST['contenido'],
+                'titulo' => $this->sanitize($_POST['titulo']),
+                'contenido' => $_POST['contenido'], // No sanitizar para preservar saltos de línea
                 'destacado' => isset($_POST['destacado']) ? 1 : 0,
+                'activo' => 1, // Por defecto activo
                 'usuario_id' => $_SESSION['user_id']
             ];
             
             if($avisoModel->create($data)) {
+                $this->setFlash('success', 'Aviso creado exitosamente');
                 $this->redirect('admin/avisos');
+            } else {
+                $this->setFlash('error', 'Error al crear el aviso');
             }
         }
         
@@ -110,6 +116,7 @@ class AdminController extends Controller {
         $aviso = $avisoModel->getById($id);
         
         if(!$aviso) {
+            $this->setFlash('error', 'Aviso no encontrado');
             $this->redirect('admin/avisos');
         }
         
@@ -117,13 +124,16 @@ class AdminController extends Controller {
             $this->validateCSRF();
             
             $data = [
-                'titulo' => $_POST['titulo'],
+                'titulo' => $this->sanitize($_POST['titulo']),
                 'contenido' => $_POST['contenido'],
                 'destacado' => isset($_POST['destacado']) ? 1 : 0
             ];
             
             if($avisoModel->update($id, $data)) {
+                $this->setFlash('success', 'Aviso actualizado exitosamente');
                 $this->redirect('admin/avisos');
+            } else {
+                $this->setFlash('error', 'Error al actualizar el aviso');
             }
         }
         
@@ -140,8 +150,32 @@ class AdminController extends Controller {
         $this->requireAuth();
         $this->requireAdmin();
         
+        if(!$id) {
+            $this->setFlash('error', 'ID de aviso no válido');
+            $this->redirect('admin/avisos');
+        }
+        
         $avisoModel = new Aviso();
-        $avisoModel->delete($id);
+        $aviso = $avisoModel->getById($id);
+        
+        if(!$aviso) {
+            $this->setFlash('error', 'Aviso no encontrado');
+            $this->redirect('admin/avisos');
+        }
+        
+        // Eliminar imagen si existe
+        if(isset($aviso['imagen']) && $aviso['imagen']) {
+            $imagePath = '../public/uploads/avisos/' . $aviso['imagen'];
+            if(file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
+        
+        if($avisoModel->delete($id)) {
+            $this->setFlash('success', 'Aviso eliminado exitosamente');
+        } else {
+            $this->setFlash('error', 'Error al eliminar el aviso');
+        }
         
         $this->redirect('admin/avisos');
     }

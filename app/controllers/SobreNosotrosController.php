@@ -8,8 +8,11 @@ class SobreNosotrosController extends Controller {
         $data = [
             'title' => 'Sobre Nosotros',
             'consejeros' => $consejeroModel->getAllConInstituciones(),
-            'informacion' => $infoModel->getSecciones()
+            'informacion' => $infoModel->getSecciones() // Esta línea es la clave
         ];
+        
+        // Debug: descomentar para verificar que hay datos
+        // echo '<pre>'; print_r($data['informacion']); echo '</pre>'; die();
         
         $this->view('sobre-nosotros/index', $data);
     }

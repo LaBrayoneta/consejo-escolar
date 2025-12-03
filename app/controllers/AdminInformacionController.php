@@ -26,7 +26,7 @@ class AdminInformacionController extends Controller {
                 'seccion' => $this->sanitize($_POST['seccion']),
                 'titulo' => $this->sanitize($_POST['titulo']),
                 'contenido' => $_POST['contenido'], // No sanitizar para preservar saltos de línea
-                'orden' => $_POST['orden'] ?? 0,
+                'orden' => (int)($_POST['orden'] ?? 0),
                 'activo' => isset($_POST['activo']) ? 1 : 0
             ];
             
@@ -64,7 +64,7 @@ class AdminInformacionController extends Controller {
                 'seccion' => $this->sanitize($_POST['seccion']),
                 'titulo' => $this->sanitize($_POST['titulo']),
                 'contenido' => $_POST['contenido'],
-                'orden' => $_POST['orden'] ?? 0,
+                'orden' => (int)($_POST['orden'] ?? 0),
                 'activo' => isset($_POST['activo']) ? 1 : 0
             ];
             
@@ -89,7 +89,18 @@ class AdminInformacionController extends Controller {
         $this->requireAuth();
         $this->requireAdmin();
         
+        if(!$id) {
+            $this->setFlash('error', 'ID de sección no válido');
+            $this->redirect('admin/informacion');
+        }
+        
         $infoModel = new InformacionInstitucional();
+        $seccion = $infoModel->getById($id);
+        
+        if(!$seccion) {
+            $this->setFlash('error', 'Sección no encontrada');
+            $this->redirect('admin/informacion');
+        }
         
         if($infoModel->delete($id)) {
             $this->setFlash('success', 'Sección eliminada exitosamente');
