@@ -1,4 +1,3 @@
-
 <aside class="admin-sidebar">
     <div class="sidebar-header">
         <h2>🏫 Consejo Escolar</h2>
@@ -12,6 +11,7 @@
             <li><a href="<?php echo BASE_URL; ?>admin/oficinas">🏢 Oficinas</a></li>
             <li><a href="<?php echo BASE_URL; ?>admin/consejeros">👔 Consejeros</a></li>
             <li><a href="<?php echo BASE_URL; ?>admin/instituciones">🏫 Instituciones</a></li>
+            <li><a href="<?php echo BASE_URL; ?>admin/horarios">⏰ Horarios</a></li>
             <li><a href="<?php echo BASE_URL; ?>admin/informacion">📋 Información Institucional</a></li>
         </ul>
     </nav>
