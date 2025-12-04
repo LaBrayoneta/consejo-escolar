@@ -1,15 +1,12 @@
-/* ============================================
-   ADMIN CSS MEJORADO - Consejo Escolar
-   ============================================ */
-
 :root {
-    --primary: #667eea;
-    --primary-dark: #5a67d8;
-    --secondary: #764ba2;
+    /* Colores celeste azulado */
+    --primary: #4facfe;
+    --primary-dark: #2563eb;
+    --secondary: #00f2fe;
     --success: #48bb78;
     --warning: #ed8936;
     --danger: #f56565;
-    --info: #4299e1;
+    --info: #06b6d4;
     --dark: #1a202c;
     --dark-light: #2d3748;
     
@@ -50,18 +47,10 @@ body {
     line-height: 1.6;
 }
 
-/* ============================================
-   LAYOUT
-   ============================================ */
-
 .admin-page {
     display: flex;
     min-height: 100vh;
 }
-
-/* ============================================
-   SIDEBAR
-   ============================================ */
 
 .admin-sidebar {
     width: var(--sidebar-width);
@@ -149,7 +138,7 @@ body {
 }
 
 .sidebar-nav a.active {
-    background: rgba(102, 126, 234, 0.2);
+    background: rgba(79, 172, 254, 0.2);
     color: white;
 }
 
@@ -177,20 +166,12 @@ body {
     padding-left: 8px;
 }
 
-/* ============================================
-   CONTENT AREA
-   ============================================ */
-
 .admin-content {
     flex: 1;
     margin-left: var(--sidebar-width);
     min-height: 100vh;
     transition: var(--transition);
 }
-
-/* ============================================
-   HEADER
-   ============================================ */
 
 .admin-header {
     background: white;
@@ -265,19 +246,11 @@ body {
     font-size: 18px;
 }
 
-/* ============================================
-   CONTAINER
-   ============================================ */
-
 .admin-container {
     padding: 32px;
     max-width: 1400px;
     margin: 0 auto;
 }
-
-/* ============================================
-   STATS ROW
-   ============================================ */
 
 .stats-row {
     display: grid;
@@ -327,7 +300,7 @@ body {
 }
 
 .stat-primary .stat-icon {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    background: linear-gradient(135deg, rgba(79, 172, 254, 0.1) 0%, rgba(0, 242, 254, 0.1) 100%);
 }
 
 .stat-warning .stat-icon {
@@ -353,10 +326,6 @@ body {
     color: var(--dark);
     line-height: 1;
 }
-
-/* ============================================
-   ACTIONS BAR
-   ============================================ */
 
 .actions-bar {
     background: white;
@@ -393,7 +362,7 @@ body {
     outline: none;
     border-color: var(--primary);
     background: white;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
 }
 
 .actions-buttons {
@@ -421,12 +390,8 @@ body {
 .filter-select:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
 }
-
-/* ============================================
-   BOTONES
-   ============================================ */
 
 .btn {
     display: inline-flex;
@@ -504,10 +469,6 @@ body {
     font-size: 16px;
 }
 
-/* ============================================
-   AVISOS GRID
-   ============================================ */
-
 .avisos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -562,11 +523,19 @@ body {
     flex-direction: column;
 }
 
+.aviso-title {
+    font-size: 1.25rem;
+    color: var(--dark);
+    margin-bottom: 12px;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
 .aviso-excerpt {
     color: var(--gray-600);
     font-size: 14px;
     line-height: 1.6;
-    max-height: 4.8em; /* 1.6 line-height × 3 líneas */
+    max-height: 4.8em;
     overflow: hidden;
     position: relative;
 }
@@ -629,12 +598,12 @@ body {
 }
 
 .btn-view {
-    background: linear-gradient(135deg, #e6f7ff 0%, #bae7ff 100%);
-    border: 2px solid #91d5ff;
+    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+    border: 2px solid #7dd3fc;
 }
 
 .btn-view:hover {
-    background: linear-gradient(135deg, #bae7ff 0%, #91d5ff 100%);
+    background: linear-gradient(135deg, #bae6fd 0%, #7dd3fc 100%);
     transform: scale(1.1);
 }
 
@@ -657,10 +626,6 @@ body {
     background: linear-gradient(135deg, #ffd4cc 0%, #ffaaa5 100%);
     transform: scale(1.1);
 }
-
-/* ============================================
-   BADGES
-   ============================================ */
 
 .badge {
     display: inline-flex;
@@ -692,9 +657,11 @@ body {
     border: 2px solid rgba(237, 137, 54, 0.3);
 }
 
-/* ============================================
-   EMPTY STATES
-   ============================================ */
+.badge-info {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(14, 165, 233, 0.15) 100%);
+    color: var(--info);
+    border: 2px solid rgba(6, 182, 212, 0.3);
+}
 
 .empty-state-admin {
     text-align: center;
@@ -751,10 +718,6 @@ body {
     color: var(--gray-500);
 }
 
-/* ============================================
-   FORMS
-   ============================================ */
-
 .form-card {
     background: white;
     border-radius: var(--radius-lg);
@@ -794,7 +757,7 @@ body {
     outline: none;
     border-color: var(--primary);
     background: white;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
 }
 
 .form-group textarea {
@@ -827,10 +790,54 @@ body {
     flex-wrap: wrap;
 }
 
-/* ============================================
-   RESPONSIVE
-   ============================================ */
+.alert {
+    padding: 16px 20px;
+    border-radius: var(--radius-md);
+    margin-bottom: 24px;
+    font-weight: 600;
+}
 
+.alert-success {
+    background: linear-gradient(135deg, rgba(72, 187, 120, 0.15) 0%, rgba(56, 178, 172, 0.1) 100%);
+    color: var(--success);
+    border-left: 4px solid var(--success);
+}
+
+.alert-error {
+    background: linear-gradient(135deg, rgba(245, 101, 101, 0.15) 0%, rgba(229, 62, 62, 0.1) 100%);
+    color: var(--danger);
+    border-left: 4px solid var(--danger);
+}
+
+/* Dashboard específico */
+.welcome-banner {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    border-radius: 20px;
+    padding: 32px;
+    margin-bottom: 32px;
+    color: white;
+    box-shadow: 0 10px 40px rgba(79, 172, 254, 0.3);
+}
+
+.stat-icon-wrapper {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.stat-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--danger);
+    color: white;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 4px 8px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(245, 101, 101, 0.4);
+}
+
+/* Responsive */
 @media (max-width: 1024px) {
     .admin-sidebar {
         transform: translateX(-100%);
@@ -908,10 +915,7 @@ body {
     }
 }
 
-/* ============================================
-   SIDEBAR FOOTER - Agregar al final de admin.css
-   ============================================ */
-
+/* Sidebar Footer Mejorado */
 .sidebar-footer {
     padding: 16px;
     background: rgba(0,0,0,0.2);
@@ -956,7 +960,6 @@ body {
     opacity: 1;
 }
 
-/* Estilo para "Ver sitio público" */
 .footer-link-primary {
     background: linear-gradient(135deg, rgba(79, 172, 254, 0.2) 0%, rgba(0, 242, 254, 0.2) 100%);
     border-color: rgba(79, 172, 254, 0.3);
@@ -969,7 +972,6 @@ body {
     box-shadow: 0 4px 12px rgba(79, 172, 254, 0.3);
 }
 
-/* Estilo para "Cerrar Sesión" */
 .footer-link-danger {
     background: linear-gradient(135deg, rgba(245, 101, 101, 0.2) 0%, rgba(229, 62, 62, 0.2) 100%);
     border-color: rgba(245, 101, 101, 0.3);
@@ -980,127 +982,4 @@ body {
     border-color: rgba(245, 101, 101, 0.6);
     transform: translateX(4px);
     box-shadow: 0 4px 12px rgba(245, 101, 101, 0.3);
-}
-
-.link-icon {
-    font-size: 20px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    background: rgba(255,255,255,0.15);
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 1;
-}
-
-.footer-link:hover .link-icon {
-    background: rgba(255,255,255,0.25);
-    transform: scale(1.1) rotate(5deg);
-}
-
-.link-text {
-    flex: 1;
-    position: relative;
-    z-index: 1;
-    white-space: nowrap;
-}
-
-.link-arrow {
-    font-size: 18px;
-    font-weight: 800;
-    opacity: 0.7;
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 1;
-}
-
-.footer-link:hover .link-arrow {
-    opacity: 1;
-    transform: translateX(4px);
-}
-
-/* Animación de brillo al hover */
-@keyframes shine {
-    0% {
-        left: -100%;
-    }
-    100% {
-        left: 100%;
-    }
-}
-
-.footer-link::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    z-index: 1;
-    pointer-events: none;
-}
-
-.footer-link:hover::after {
-    animation: shine 0.8s ease-in-out;
-}
-
-/* Estado activo al hacer click */
-.footer-link:active {
-    transform: scale(0.98);
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-    .sidebar-footer {
-        padding: 12px;
-        gap: 6px;
-    }
-    
-    .footer-link {
-        padding: 12px 14px;
-        font-size: 13px;
-        gap: 10px;
-    }
-    
-    .link-icon {
-        width: 28px;
-        height: 28px;
-        font-size: 18px;
-    }
-    
-    .link-arrow {
-        font-size: 16px;
-    }
-}
-
-/* Para pantallas muy pequeñas */
-@media (max-width: 480px) {
-    .footer-link {
-        padding: 10px 12px;
-        font-size: 12px;
-    }
-    
-    .link-text {
-        font-size: 12px;
-    }
-}
-
-/* Mejorar contraste en modo oscuro */
-@media (prefers-color-scheme: dark) {
-    .footer-link {
-        border-color: rgba(255,255,255,0.15);
-    }
-    
-    .footer-link-primary {
-        background: linear-gradient(135deg, rgba(79, 172, 254, 0.25) 0%, rgba(0, 242, 254, 0.25) 100%);
-    }
-    
-    .footer-link-danger {
-        background: linear-gradient(135deg, rgba(245, 101, 101, 0.25) 0%, rgba(229, 62, 62, 0.25) 100%);
-    }
 }

@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -15,9 +15,7 @@ body {
     overflow: hidden;
 }
 
-/* ============================================
-   Fondo Animado
-   ============================================ */
+/* Fondo Animado */
 .bg-animation {
     position: absolute;
     top: 0;
@@ -126,9 +124,7 @@ body {
     }
 }
 
-/* ============================================
-   Login Container
-   ============================================ */
+/* Login Container */
 .login-container {
     width: 100%;
     max-width: 450px;
@@ -158,9 +154,7 @@ body {
     }
 }
 
-/* ============================================
-   Header
-   ============================================ */
+/* Header */
 .login-header {
     text-align: center;
     margin-bottom: 40px;
@@ -170,13 +164,13 @@ body {
     width: 80px;
     height: 80px;
     margin: 0 auto 20px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 40px;
-    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 10px 30px rgba(79, 172, 254, 0.4);
     animation: float 3s ease-in-out infinite;
 }
 
@@ -192,7 +186,7 @@ body {
 .login-header h1 {
     font-size: 28px;
     font-weight: 800;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -205,9 +199,7 @@ body {
     font-size: 15px;
 }
 
-/* ============================================
-   Alerts
-   ============================================ */
+/* Alerts */
 .alert {
     padding: 16px 20px;
     border-radius: 12px;
@@ -237,9 +229,7 @@ body {
     font-size: 20px;
 }
 
-/* ============================================
-   Form
-   ============================================ */
+/* Form */
 .form-group {
     margin-bottom: 24px;
     position: relative;
@@ -282,14 +272,14 @@ body {
 
 .form-group input:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: #4facfe;
     background: white;
-    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+    box-shadow: 0 0 0 4px rgba(79, 172, 254, 0.1);
 }
 
 .form-group input:focus ~ .input-icon {
     opacity: 1;
-    color: #667eea;
+    color: #4facfe;
 }
 
 .password-toggle {
@@ -311,9 +301,7 @@ body {
     opacity: 1;
 }
 
-/* ============================================
-   Remember & Forgot
-   ============================================ */
+/* Remember & Forgot */
 .remember-forgot {
     display: flex;
     justify-content: space-between;
@@ -334,27 +322,25 @@ body {
     width: 18px;
     height: 18px;
     cursor: pointer;
-    accent-color: #667eea;
+    accent-color: #4facfe;
 }
 
 .forgot-password {
-    color: #667eea;
+    color: #4facfe;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
 }
 
 .forgot-password:hover {
-    color: #764ba2;
+    color: #00f2fe;
 }
 
-/* ============================================
-   Button
-   ============================================ */
+/* Button */
 .btn {
     width: 100%;
     padding: 16px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     color: white;
     border: none;
     border-radius: 12px;
@@ -362,7 +348,7 @@ body {
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 8px 20px rgba(79, 172, 254, 0.4);
     position: relative;
     overflow: hidden;
 }
@@ -387,7 +373,7 @@ body {
 
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(102, 126, 234, 0.5);
+    box-shadow: 0 12px 30px rgba(79, 172, 254, 0.5);
 }
 
 .btn:active {
@@ -424,9 +410,7 @@ body {
     to { transform: rotate(360deg); }
 }
 
-/* ============================================
-   Footer
-   ============================================ */
+/* Footer */
 .login-footer {
     text-align: center;
     margin-top: 32px;
@@ -435,7 +419,7 @@ body {
 }
 
 .login-footer a {
-    color: #667eea;
+    color: #4facfe;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -445,13 +429,11 @@ body {
 }
 
 .login-footer a:hover {
-    color: #764ba2;
+    color: #00f2fe;
     gap: 12px;
 }
 
-/* ============================================
-   Responsive
-   ============================================ */
+/* Responsive */
 @media (max-width: 480px) {
     .login-box {
         padding: 32px 24px;

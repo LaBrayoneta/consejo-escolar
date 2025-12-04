@@ -1,15 +1,15 @@
 :root {
-    /* Colores principales - Gradientes modernos */
-    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    /* Colores principales - Gradientes celeste azulado */
+    --primary-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --secondary-gradient: linear-gradient(135deg, #38b2ac 0%, #4299e1 100%);
+    --accent-gradient: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
     --success-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
     
-    /* Colores sólidos */
-    --primary-color: #667eea;
-    --primary-dark: #5568d3;
-    --secondary-color: #764ba2;
-    --accent-color: #f5576c;
+    /* Colores sólidos celeste azulado */
+    --primary-color: #4facfe;
+    --primary-dark: #2563eb;
+    --secondary-color: #00f2fe;
+    --accent-color: #0ea5e9;
     
     /* Neutrales modernos */
     --text-primary: #1a202c;
@@ -20,11 +20,11 @@
     --bg-tertiary: #edf2f7;
     --border-color: #e2e8f0;
     
-    /* Sombras modernas */
-    --shadow-sm: 0 2px 8px rgba(102, 126, 234, 0.1);
-    --shadow-md: 0 4px 16px rgba(102, 126, 234, 0.15);
-    --shadow-lg: 0 10px 30px rgba(102, 126, 234, 0.2);
-    --shadow-xl: 0 20px 60px rgba(102, 126, 234, 0.25);
+    /* Sombras modernos con tono celeste */
+    --shadow-sm: 0 2px 8px rgba(79, 172, 254, 0.1);
+    --shadow-md: 0 4px 16px rgba(79, 172, 254, 0.15);
+    --shadow-lg: 0 10px 30px rgba(79, 172, 254, 0.2);
+    --shadow-xl: 0 20px 60px rgba(79, 172, 254, 0.25);
     
     /* Glassmorphism */
     --glass-bg: rgba(255, 255, 255, 0.95);
@@ -278,7 +278,7 @@ body {
     height: 8px;
     background: var(--secondary-gradient);
     border-radius: var(--radius-full);
-    box-shadow: 0 4px 20px rgba(245, 87, 108, 0.4);
+    box-shadow: 0 4px 20px rgba(56, 178, 172, 0.4);
 }
 
 .page-header h1 {
@@ -366,7 +366,7 @@ body {
 
 .btn-back:hover {
     gap: var(--spacing-md);
-    background: rgba(102, 126, 234, 0.1);
+    background: rgba(79, 172, 254, 0.1);
     transform: translateX(-4px);
 }
 
@@ -408,7 +408,7 @@ body {
     height: 4px;
     background: var(--accent-gradient);
     border-radius: var(--radius-full);
-    box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
 }
 
 .avisos-grid {
@@ -452,7 +452,7 @@ body {
 }
 
 .aviso-card.destacado {
-    background: linear-gradient(135deg, rgba(245, 87, 108, 0.05) 0%, rgba(255, 255, 255, 0.95) 100%);
+    background: linear-gradient(135deg, rgba(79, 172, 254, 0.05) 0%, rgba(255, 255, 255, 0.95) 100%);
     border-left: 4px solid;
     border-image: var(--accent-gradient) 1;
 }
@@ -575,7 +575,7 @@ body {
 }
 
 .tab-btn:hover {
-    background-color: rgba(102, 126, 234, 0.05);
+    background-color: rgba(79, 172, 254, 0.05);
     color: var(--primary-color);
 }
 
@@ -887,13 +887,10 @@ body {
 /* ============================================
    FIX: Ocultar elementos del admin en público
    ============================================ */
-
-/* Asegurarse que el sidebar-toggle del admin NO aparezca */
 .sidebar-toggle {
     display: none !important;
 }
 
-/* Solo mostrar el menu-toggle en móvil */
 .menu-toggle {
     display: none;
 }
@@ -904,7 +901,6 @@ body {
     }
 }
 
-/* Ocultar cualquier elemento de admin que se filtre */
 .admin-sidebar,
 .admin-header,
 .admin-content {
